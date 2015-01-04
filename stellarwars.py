@@ -10,6 +10,11 @@ class System():
 
     def __init__(self, type):
         self._type = type
+        self._damage = 0
+
+    @property
+    def damage(self):
+        return self._damage
 
 class Weapon():
 
@@ -23,13 +28,17 @@ class Weapon():
     def __init__(self, type, side):
         self._type = type
         self._side = side
+        self._damage = 0
 
+    @property
+    def damage(self):
+        return self._damage
 
 
 class Ship():
 
     TYPE_DREADNOUGHT = 7
-    TYPE_BATTLESHIT = 6
+    TYPE_BATTLESHIP = 6
     TYPE_CRUISER = 5
     TYPE_DESTROYER = 4
     TYPE_ESCORT = 3
@@ -43,18 +52,16 @@ class Ship():
     SIDE_REARLEFT = 5
     SIDE_FORWARDLEFT = 6
 
-    def __init__(self, name, type):
+    def __init__(self, name, type, engine, hull, reactor, shields, armor, weapons, systems):
         self._name = name
         self._type = type
-        self._engine = 0
-        self._hull = 0
-        self._reactor = 0
-        self._shield = {}
-        self._armor = {}
-        self._missles = 0
-        self._mines = 0
-        self._weapons = []
-        self._systems = []
+        self._engine = engine
+        self._hull = hull
+        self._reactor = reactor
+        self._shields = shields
+        self._armor = armor
+        self._weapons = weapons
+        self._systems = systems
 
     @property
     def name(self):
@@ -77,20 +84,20 @@ class Ship():
         return self._reactor
 
     @property
-    def shield(self, side):
-        return self._shield[side]
+    def shields(self):
+        return self._shields
 
     @property
-    def armor(self, side):
-        return self._armor[side]
+    def armor(self):
+        return self._armor
 
     @property
-    def missles(self):
-        return self._missles
+    def weapons(self):
+        return self._weapons
 
     @property
-    def mines(self):
-        return self._mines
+    def systems(self):
+        return self._systems
 
 
 
